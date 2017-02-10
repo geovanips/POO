@@ -60,14 +60,17 @@ if localizar_conta(conta)!=nil
   puts "Digite uma operacao"
   puts "1 - Ver saldo \n2 - Depositar\n3 - Sacar\n4 - Transferir"
   operacao=gets.chomp.to_i
-  while operacao>4
+while operacao>4
 	  puts "operacao invalida"
 	  puts "Digite novamente"
 	  operacao=gets.chomp.to_i
   end
-  if operacao==1 
-    puts "Seu saldo é #{saldo_inicial}"
+  if operacao==1
+    puts "Seu saldo é R$ #{localizar_conta(conta).saldo}"
+    elsif operacao==2 
+    
   end
+  i=0
 else
   puts "Conta não localizada"
   i=0

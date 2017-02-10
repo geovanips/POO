@@ -76,6 +76,7 @@ if localizar_conta(conta)!=nil
     elsif operacao==3 
       puts "Quanto deseja sacar?(cédulas disponíveis: R$ 50, R$ 20, R$ 10, R$ 5 e R$ 2): "
       valor=gets.chomp.to_i
+      
       if localizar_conta(conta).saldo>=valor
         localizar_conta(conta).sacar(valor)
         puts "Saque realizado com sucesso"
@@ -89,8 +90,9 @@ if localizar_conta(conta)!=nil
       if localizar_conta(contat)!=nil
         puts "Digite o valor a Transferir"
         valor=gets.chomp.to_i
-        localizar_conta(conta).Transferir(valor, localizar_conta(contat))
+        localizar_conta(conta).transferir(valor, localizar_conta(contat))
         puts "Transferencia concluida"
+        puts "Transferencia da conta #{conta} valor R$#{valor} para conta #{contat} "
       else
         puts "conta de destino nao localizada"
       end
@@ -101,3 +103,4 @@ else
   i=0
 end
 end
+

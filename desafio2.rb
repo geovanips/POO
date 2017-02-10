@@ -60,7 +60,7 @@ if localizar_conta(conta)!=nil
   puts "Digite uma operacao"
   puts "1 - Ver saldo \n2 - Depositar\n3 - Sacar\n4 - Transferir"
   operacao=gets.chomp.to_i
-while operacao>4
+  while operacao>4
 	  puts "operacao invalida"
 	  puts "Digite novamente"
 	  operacao=gets.chomp.to_i
@@ -68,7 +68,32 @@ while operacao>4
   if operacao==1
     puts "Seu saldo é R$ #{localizar_conta(conta).saldo}"
     elsif operacao==2 
-    
+      puts "Quanto deseja Despositar?\n"
+      dep=gets.chomp.to_i
+      localizar_conta(conta).depositar(dep)
+      puts "Deposito realizado com sucesso"
+      puts "Saldo apos o deposito: R$ #{localizar_conta(conta).saldo}"
+    elsif operacao==3 
+      puts "Quanto deseja sacar?(cédulas disponíveis: R$ 50, R$ 20, R$ 10, R$ 5 e R$ 2): "
+      valor=gets.chomp.to_i
+      if localizar_conta(conta).saldo>=valor
+        localizar_conta(conta).sacar(valor)
+        puts "Saque realizado com sucesso"
+        puts "Saldo apos saque R$#{localizar_conta(conta).saldo}"
+      else
+        puts "Saldo insuficiente: Valor disponivel R$#{localizar_conta(conta).saldo}"
+      end
+    elsif operacao==4 
+      puts "Digite o número da conta de destino: "
+      contat=gets.chomp.to_i
+      if localizar_conta(contat)!=nil
+        puts "Digite o valor a Transferir"
+        valor=gets.chomp.to_i
+        localizar_conta(conta).Transferir(valor, localizar_conta(contat))
+        puts "Transferencia concluida"
+      else
+        puts "conta de destino nao localizada"
+      end
   end
   i=0
 else
